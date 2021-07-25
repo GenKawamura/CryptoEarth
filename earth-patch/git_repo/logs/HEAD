@@ -1,0 +1,3 @@
+0000000000000000000000000000000000000000 098e6ca12085671f0d86154d67f9c639a083164c trinidarts-developers <trinidarts.developers@gmail.com> 1515872121 +0100	commit (initial): first commit for Earth
+098e6ca12085671f0d86154d67f9c639a083164c 48c423d3b723d69cb5e48afb32e3e025f41a47be trinidarts-developers <trinidarts.developers@gmail.com> 1515872468 +0100	commit: Modified code as Earth
+48c423d3b723d69cb5e48afb32e3e025f41a47be 73bf3fe456fefa22d286638e3ccbffb374d02b63 GenKawamura <gen.kawamura@cern.ch> 1517063328 +0100	commit: A syncronization test with new main blockchain among 6 nodes works

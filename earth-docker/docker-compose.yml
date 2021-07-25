@@ -1,0 +1,108 @@
+version: "2.0"
+
+services:
+ ## Services prividing Earth P2P nodes
+ earth-builder:
+  build:
+    context: earth
+    dockerfile: utils/build_scripts/ubuntu16.Dockerfile.earth-builder
+  image: earth/earth-builder.ubuntu16
+  command: /bin/bash -x /usr/bin/earth-builder
+  volumes: 
+    - "$PWD/earth:/src"
+  networks:
+    dockernet:
+     ipv4_address: 10.10.0.4
+
+ earth0:
+  build:
+    context: earth
+    dockerfile: utils/build_scripts/ubuntu16.Dockerfile.earth-debug
+  image: earth/earth-debug.ubuntu16
+  command: /bin/bash
+  volumes: 
+    - "$PWD/volumes/earth0:/root/.earth"
+    - "$PWD/volumes/wallet:/wallet"
+  networks:
+    dockernet:
+     ipv4_address: 10.10.0.5 
+
+ earth1:
+  build:
+    context: earth
+    dockerfile: utils/build_scripts/ubuntu16.Dockerfile.earth-debug
+  image: earth/earth-debug.ubuntu16
+  command: /bin/bash
+  volumes: 
+    - "$PWD/volumes/earth1:/root/.earth"
+    - "$PWD/volumes/wallet:/wallet"
+  networks:
+    dockernet:
+     ipv4_address: 10.10.0.6 
+
+ earth2:
+  build:
+    context: earth
+    dockerfile: utils/build_scripts/ubuntu16.Dockerfile.earth
+  image: earth/earth.ubuntu16
+  volumes: 
+    - "$PWD/volumes/earth2:/root/.earth"
+  networks:
+    dockernet:
+     ipv4_address: 10.10.0.7 
+
+ earth3:
+  build:
+    context: earth
+    dockerfile: utils/build_scripts/ubuntu16.Dockerfile.earth
+  image: earth/earth.ubuntu16
+  volumes: 
+    - "$PWD/volumes/earth3:/root/.earth"
+  networks:
+    dockernet:
+     ipv4_address: 10.10.0.8 
+
+ earth4:
+  build:
+    context: earth
+    dockerfile: utils/build_scripts/ubuntu16.Dockerfile.earth
+  image: earth/earth.ubuntu16
+  volumes:
+    - "$PWD/volumes/earth4:/root/.earth"
+  networks:
+    dockernet:
+     ipv4_address: 10.10.0.9 
+
+ earth5:
+  build:
+    context: earth
+    dockerfile: utils/build_scripts/ubuntu16.Dockerfile.earth
+  image: earth/earth.ubuntu16
+  volumes:
+    - "$PWD/volumes/earth5:/root/.earth"
+
+
+ earth6:
+  build:
+    context: earth
+    dockerfile: utils/build_scripts/ubuntu16.Dockerfile.earth
+  image: earth/earth.ubuntu16
+  volumes:
+    - "$PWD/volumes/earth6:/root/.earth"
+
+ earth7:
+  build:
+    context: earth
+    dockerfile: utils/build_scripts/ubuntu16.Dockerfile.earth
+  image: earth/earth.ubuntu16
+  volumes:
+    - "$PWD/volumes/earth7:/root/.earth"
+
+
+networks:
+  dockernet:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.10.0.0/16
+         gateway: 10.10.0.1

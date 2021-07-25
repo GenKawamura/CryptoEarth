@@ -1,0 +1,26 @@
+# Multistage docker build, requires docker 16.04
+
+# builder stage
+FROM ubuntu:16.04
+
+RUN apt-get update && \
+    apt-get --no-install-recommends --yes install \
+        ca-certificates \
+        cmake \
+        g++ \
+        libboost1.58-all-dev \
+        libssl-dev \
+        libzmq3-dev \
+        libreadline-dev \
+        libsodium-dev \
+        make \
+        pkg-config \
+        graphviz \
+        doxygen \
+        git
+
+RUN apt-get --yes install nmap iputils-ping emacs less screen tmux
+
+WORKDIR /src
+RUN echo "cd /src; rm -rf build; ls -al; make -j$(nproc) release-static; cp -v /src/build/release/bin/* /usr/local/bin/" > /usr/bin/earth-builder && chmod 755 /usr/bin/earth-builder
+

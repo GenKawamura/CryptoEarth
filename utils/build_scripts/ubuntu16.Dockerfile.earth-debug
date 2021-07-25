@@ -1,0 +1,24 @@
+# builder stage
+FROM ubuntu:16.04
+
+RUN apt-get update && \
+    apt-get --no-install-recommends --yes install \
+        ca-certificates \
+        cmake \
+        g++ \
+        libboost1.58-all-dev \
+        libssl-dev \
+        libzmq3-dev \
+        libreadline-dev \
+        libsodium-dev \
+        make \
+        pkg-config \
+        graphviz \
+        doxygen \
+        git
+
+RUN apt-get --yes install nmap iputils-ping emacs less screen tmux
+
+WORKDIR /src
+COPY build/release/bin/* /usr/local/bin/
+
